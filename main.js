@@ -22,8 +22,10 @@ function mainLoop() {
 }
 
 let userInput = (input) => {
+    console.log("gameArray.length: " + gameArray.length);
+    console.log("playerArray.length " + playerArray.length);
 
-    if (playerArray.length < gameArray.length){
+    if (playerArray.length == (gameArray.length-1)){
         //5. Agregar ingreso del usuario al arreglo del usuario
         playerArray.push(input);
         if (playerArray.length < gameArray.length){
@@ -34,11 +36,7 @@ let userInput = (input) => {
             }
         }
     }else{
-        if(compare(playerArray, gameArray) == true){
-            mainLoop()
-        }else{
-            console.log("You Lost");
-        }
+        playerArray.push(input);
     }
 }
 
