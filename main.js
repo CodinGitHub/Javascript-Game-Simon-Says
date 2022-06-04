@@ -20,6 +20,29 @@ function mainLoop() {
     // 2. Agregar numero aleatorio al arreglo del juego
     gameArray.push(randomNumber);
 
+    console.log(gameArray.length)
+    
+    for(let i=0; i>=gameArray.length; i++){
+        console.log(gameArray[i])
+        console.log('estoy aqui')
+        switch(gameArray[i]){
+            case 1:
+                sound1.play();
+                break;
+            case 2:
+                sound2.play();
+                break;
+            case 3:
+                sound3.play();
+                break;
+            case 4:
+                sound4.play();
+                break;
+        }
+    
+    }
+    
+    
     // 3. Mostrar secuencia
     console.log("Simon Says: " + gameArray);
 
