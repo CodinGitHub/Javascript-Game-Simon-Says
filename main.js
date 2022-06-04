@@ -1,3 +1,5 @@
+let start = document.getElementById('startBtn');
+
 let gameArray = [];
 let playerArray = [];
 let score = 0;
@@ -7,7 +9,9 @@ let sound2 = new Audio('./sounds/simonSound2.mp3');
 let sound3 = new Audio('./sounds/simonSound3.mp3');
 let sound4 = new Audio('./sounds/simonSound4.mp3');
 
-mainLoop();
+start.addEventListener('click', ()=>{
+    mainLoop();
+});
 
 function mainLoop() {
 
@@ -19,27 +23,26 @@ function mainLoop() {
 
     // 2. Agregar numero aleatorio al arreglo del juego
     gameArray.push(randomNumber);
-
-    console.log(gameArray.length)
-    
-    for(let i=0; i>=gameArray.length; i++){
-        console.log(gameArray[i])
-        console.log('estoy aqui')
+    for(let i=0; i<gameArray.length; i++){
+        
         switch(gameArray[i]){
             case 1:
-                sound1.play();
+                    sound1.play();
                 break;
+
             case 2:
-                sound2.play();
+                    sound2.play();
                 break;
+
             case 3:
-                sound3.play();
+                    sound3.play();
                 break;
+
             case 4:
-                sound4.play();
+                    sound4.play();
                 break;
         }
-    
+       
     }
     
     
@@ -53,7 +56,7 @@ function mainLoop() {
 btnContainer.addEventListener('click', (event)=>{
     let playerChoise = event.srcElement.id;
     
-    console.log(playerChoise)
+    // console.log(playerChoise)
     switch(playerChoise){
         case '1':
             sound1.play();
@@ -70,9 +73,6 @@ btnContainer.addEventListener('click', (event)=>{
     }
 
     playerArray.push(playerChoise);
-
-    console.log('playerArray: ' + playerArray)
-    console.log('gameArray: ' + gameArray)
      
     if(playerArray.length == gameArray.length){
         if(compareArrays(playerArray, gameArray)){
@@ -96,4 +96,9 @@ function compareArrays(array1, array2){
         }
     }
     return true;
+}
+
+function playSound(number){
+    let numberSwitch = number;
+
 }
