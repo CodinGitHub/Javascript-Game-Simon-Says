@@ -25,23 +25,26 @@ function mainLoop() {
     gameArray.push(randomNumber);
     for(let i=0; i<gameArray.length; i++){
         
-        switch(gameArray[i]){
-            case 1:
-                    sound1.play();
-                break;
-
-            case 2:
-                    sound2.play();
-                break;
-
-            case 3:
-                    sound3.play();
-                break;
-
-            case 4:
-                    sound4.play();
-                break;
-        }
+        setTimeout(()=>{
+            switch(gameArray[i]){
+                case 1:
+                        sound1.play();
+                    break;
+    
+                case 2:
+                        sound2.play();
+                    break;
+    
+                case 3:
+                        sound3.play();
+                    break;
+    
+                case 4:
+                        sound4.play();
+                    break;
+            }
+        }, 500*i);
+        
        
     }
     
@@ -78,7 +81,9 @@ btnContainer.addEventListener('click', (event)=>{
         if(compareArrays(playerArray, gameArray)){
             score++
             scoreDiv.innerHTML = score;
-            mainLoop();
+            setTimeout(()=>{
+                mainLoop();
+            }, 500);
         }else{
             message.innerHTML = 'Fallaste'
         }
