@@ -1,14 +1,32 @@
 #btnContainer{
     display: grid;
     grid-template-columns: 1fr 1fr ;
+    gap: 10px;
     width: 400px;
 }
 
 .button{
     width: 100%;
     height: 200px;
+    border: none;
+}
+.button:hover{
+    cursor: pointer;
 }
 
-#button1{
+.button1{
     background-color: red;
+    border-top-left-radius: 100%;
+}
+.button2{
+    background-color: blue;
+    border-top-right-radius: 100%;
+}
+.button3{
+    background-color: yellow;
+    border-bottom-left-radius: 100%;
+}
+.button4{
+    background-color: green;
+    border-bottom-right-radius: 100%;
 }
