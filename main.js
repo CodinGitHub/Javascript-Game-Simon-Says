@@ -1,4 +1,16 @@
+/*
+Red = 1
+Blue = 2
+Yellow = 3
+Gree = 4
+*/
+
 let start = document.getElementById('startBtn');
+let game = document.querySelector('.main-container');
+let redBtn = document.getElementById('redBtn');
+let blueBtn = document.getElementById('blueBtn');
+let yellowBtn = document.getElementById('yellowBtn');
+let greenBtn = document.getElementById('greenBtn');
 
 let gameArray = [];
 let playerArray = [];
@@ -12,6 +24,17 @@ let sound4 = new Audio('./sounds/simonSound4.mp3');
 start.addEventListener('click', ()=>{
     mainLoop();
 });
+
+game.addEventListener('click', (event)=>{
+    // console.log(event.target.id);
+});
+
+function changeColor(idE, togleClass){
+    idE.classList.toggle(togleClass);
+    setTimeout(()=>{
+        idE.classList.toggle(togleClass);
+    },300)
+}
 
 function mainLoop() {
 
@@ -27,20 +50,24 @@ function mainLoop() {
         
         setTimeout(()=>{
             switch(gameArray[i]){
-                case 1:
+                case 1: //Red
                         sound1.play();
+                        changeColor(redBtn, 'brightRed');
                     break;
     
-                case 2:
+                case 2: //Blue
                         sound2.play();
+                        changeColor(blueBtn, 'brightBlue');
                     break;
     
-                case 3:
+                case 3: //Yellow
                         sound3.play();
+                        changeColor(yellowBtn, 'brightYellow');
                     break;
     
-                case 4:
+                case 4: // Green
                         sound4.play();
+                        changeColor(greenBtn, 'brightGreen');
                     break;
             }
         }, 500*i);
@@ -58,24 +85,34 @@ function mainLoop() {
 
 btnContainer.addEventListener('click', (event)=>{
     let playerChoise = event.srcElement.id;
-    
-    // console.log(playerChoise)
+    let playerElement = event.srcElement;
+
+
     switch(playerChoise){
-        case '1':
+        case 'redBtn':
             sound1.play();
+            changeColor(playerElement, 'brightRed');
             break;
-        case '2':
+        case 'blueBtn':
             sound2.play();
+            changeColor(playerElement, 'brightBlue');
             break;
-        case '3':
+        case 'yellowBtn':
             sound3.play();
+            changeColor(playerElement, 'brightYellow');
             break;
-        case '4':
+        case 'greenBtn':
             sound4.play();
+            changeColor(playerElement, 'brightGreen');
             break;
     }
 
+    
+
     playerArray.push(playerChoise);
+
+    console.log('playerArray' + playerArray)
+    console.log('gameArray' + gameArray)
      
     if(playerArray.length == gameArray.length){
         if(compareArrays(playerArray, gameArray)){
