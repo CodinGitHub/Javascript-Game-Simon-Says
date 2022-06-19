@@ -1,6 +1,6 @@
 # Javascript-Game-Simon-Says
 
 ## Resolver
-los arreglos se forman a partir de los id de los elementos,
-Al tener un id no numerico se crea un arreglo diferente a lo que 
-genera el juego
+Se debe comparar cada vez que el usuario presiona el boton, si la secuencia no es igual en cierta parte detener el juego.
+
+Revisar tiempos, hay un bug cuando los primeros dos colores no son iguales.
