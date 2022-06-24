@@ -1,4 +1,5 @@
 let start = document.getElementById('startBtn');
+let restart = document.getElementById('restartBtn');
 let redBtn = document.getElementById('redBtn');
 let blueBtn = document.getElementById('blueBtn');
 let yellowBtn = document.getElementById('yellowBtn');
@@ -8,25 +9,36 @@ let gameArray = [];
 let playerArray = [];
 let score = 0;
 let gameOn = false;
+let lastNumber;
 
 let sound1 = new Audio('./sounds/simonSound1.mp3');
 let sound2 = new Audio('./sounds/simonSound2.mp3');
 let sound3 = new Audio('./sounds/simonSound3.mp3');
 let sound4 = new Audio('./sounds/simonSound4.mp3');
 
+restart.addEventListener('click', ()=>{
+    location.reload();
+    // mainLoop();
+});
+
 start.addEventListener('click', ()=>{
-    gameOn = true;
     mainLoop();
 });
 
 function mainLoop() {
+    gameOn = false;
 
     // Reseteo del ingreso del usuario
     playerArray = [];
 
     // Generar numero aleatorio
-    // let randomNumber = Math.floor(Math.random()*4 + 1);
-    let randomNumber = 1;
+    let randomNumber = Math.floor(Math.random()*4 + 1);
+    if (lastNumber == randomNumber){
+        randomNumber = randomNumber + 1;
+        lastNumber = randomNumber;
+    }else{
+        lastNumber = randomNumber;
+    }
 
     // Agregar numero aleatorio al arreglo del juego
     gameArray.push(randomNumber);
@@ -55,8 +67,10 @@ function mainLoop() {
                         changeColor(greenBtn, 'brightGreen');
                     break;
             }
-        }, 500*i);
+            gameOn = true;
+        }, 600*i);
     }
+    
 }
 
 btnContainer.addEventListener('click', (event)=>{
@@ -123,10 +137,6 @@ function compareArrays(array1, array2){
     }
     return true;
 }
-
-// function playSound(number){
-//     let numberSwitch = number;
-// }
 
 function changeColor(idE, togleClass){
     idE.classList.toggle(togleClass);
